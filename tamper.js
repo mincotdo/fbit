@@ -241,7 +241,8 @@ function simulateLongPress(selector) {
     cancelable: true,
     view: null
   });
-  element.dispatchEvent(mousedownEvent);
+  //element.dispatchEvent(mousedownEvent);
+  element.dispatchEvent('mousedown');
 
   // Wait for a specific duration to simulate the long press
   const longPressDuration = 1000; // 1 second
@@ -252,7 +253,8 @@ function simulateLongPress(selector) {
       cancelable: true,
       view: null
     });
-    element.dispatchEvent(mouseupEvent);
+    //element.dispatchEvent(mouseupEvent);
+	element.dispatchEvent('mouseup');
 
     // Create and dispatch a "click" event
     const clickEvent = new MouseEvent("click", {
@@ -260,7 +262,9 @@ function simulateLongPress(selector) {
       cancelable: true,
       view: null
     });
-    element.dispatchEvent(clickEvent);
+    //element.dispatchEvent(clickEvent);
+	element.dispatchEvent('click');
+	
   }, longPressDuration);
 }
 
