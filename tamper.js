@@ -49,7 +49,7 @@
         }
 
         if(chatInfoName.indexOf('MemeFi Coin')!=-1){//đang ở memefi bot
-            console.info('IN MEMEFI BOT');
+            console.info('IN MEMEFI BOT2');
 
             portals=document.getElementsByClassName('Modal').length;
             if(portals==0){//Game chua bat
