@@ -61,7 +61,8 @@
                         selectorIndex=i;
                     }
                 }
-
+                console.info('click');
+                
                 simulateLongPress(selectorSet[selectorIndex]);
                 await delay(10);
             }else{
