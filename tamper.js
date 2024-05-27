@@ -49,7 +49,7 @@
         }
 
         if(chatInfoName.indexOf('MemeFi Coin')!=-1){//đang ở memefi bot
-            console.info('IN MEMEFI BOT2');
+            console.info('IN MEMEFI BOT');
 
             portals=document.getElementsByClassName('Modal').length;
             if(portals==0){//Game chua bat
@@ -61,8 +61,7 @@
                         selectorIndex=i;
                     }
                 }
-                console.info('click');
-                
+
                 simulateLongPress(selectorSet[selectorIndex]);
                 await delay(10);
             }else{
@@ -240,7 +239,7 @@ function simulateLongPress(selector) {
   const mousedownEvent = new MouseEvent("mousedown", {
     bubbles: true,
     cancelable: true,
-    view: window
+    view: null
   });
   element.dispatchEvent(mousedownEvent);
 
@@ -251,7 +250,7 @@ function simulateLongPress(selector) {
     const mouseupEvent = new MouseEvent("mouseup", {
       bubbles: true,
       cancelable: true,
-      view: window
+      view: null
     });
     element.dispatchEvent(mouseupEvent);
 
@@ -259,7 +258,7 @@ function simulateLongPress(selector) {
     const clickEvent = new MouseEvent("click", {
       bubbles: true,
       cancelable: true,
-      view: window
+      view: null
     });
     element.dispatchEvent(clickEvent);
   }, longPressDuration);
