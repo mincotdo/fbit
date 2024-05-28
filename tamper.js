@@ -232,41 +232,6 @@ function delay(n){
         setTimeout(resolve,n*1000);
     });
 }
-function simulateLongPress(selector) {
-  const element = selector; // Replace "myElement" with the actual ID of your target element
-
-  // Create and dispatch a "mousedown" event
-  const mousedownEvent = new MouseEvent("mousedown", {
-    bubbles: true,
-    cancelable: true,
-    view: null
-  });
-  //element.dispatchEvent(mousedownEvent);
-  element.dispatchEvent('mousedown');
-
-  // Wait for a specific duration to simulate the long press
-  const longPressDuration = 1000; // 1 second
-  setTimeout(() => {
-    // Create and dispatch a "mouseup" event
-    const mouseupEvent = new MouseEvent("mouseup", {
-      bubbles: true,
-      cancelable: true,
-      view: null
-    });
-    //element.dispatchEvent(mouseupEvent);
-	element.dispatchEvent('mouseup');
-
-    // Create and dispatch a "click" event
-    const clickEvent = new MouseEvent("click", {
-      bubbles: true,
-      cancelable: true,
-      view: null
-    });
-    //element.dispatchEvent(clickEvent);
-	element.dispatchEvent('click');
-	
-  }, longPressDuration);
-}
 
 function teleApi(actionFn,tokenFn,chatIdFn,ctnFn,messIdFn){
     try{
