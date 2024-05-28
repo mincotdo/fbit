@@ -25,6 +25,7 @@
     oldMesTeleId='';
     oldMesTeleId_outGame='';
     oldMesTeleId_inGame='';
+	teleUidEnable=false;
 
     window.onmessage = function(e) {
         if (e.data.indexOf('startTap-') != -1) {
@@ -174,8 +175,13 @@
                             try{
                                 teleUsername=document.getElementsByTagName('iframe')[0].src.split('username')[1].split('%2522')[2];
                                 stt=(accIp.indexOf(teleUsername))/2+1;
-                                teleUid=stt+'. '+document.getElementsByTagName('iframe')[0].src.split('username')[1].split('%2522')[2];
-
+								
+								if(teleUidEnable==true){
+									teleUid=stt+'. '+document.getElementsByTagName('iframe')[0].src.split('username')[1].split('%2522')[2];
+								}else{
+									teleUid=stt+'. user';
+								}
+                                
                                 teleUip=accIp[accIp.indexOf(teleUsername)+1];
                                 teleUid_index++;
                             }catch(err){
@@ -226,46 +232,5 @@
         }
     }
 })();
-
-function delay(n){
-    return new Promise(function(resolve){
-        setTimeout(resolve,n*1000);
-    });
-}
-
-function teleApi(actionFn,tokenFn,chatIdFn,ctnFn,messIdFn){
-    try{
-        if(actionFn == 'mesSend'){
-            messSend = httpGet('https://api.telegram.org/bot'+tokenFn+'/sendMessage?chat_id='+chatIdFn+'&text='+ctnFn);
-
-            returnvar = messSend.split('message_id":')[1].split(',"')[0];
-        }else if(actionFn == 'getUpdates'){
-            returnvar = httpGet('https://api.telegram.org/bot'+tokenFn+'/getUpdates');
-        }else if(actionFn == 'getUpdatesLength'){
-            returnvar = httpGet('https://api.telegram.org/bot'+tokenFn+'/getUpdates').length;
-        }else if(actionFn == 'mesDelete'){
-            returnvar = httpGet('https://api.telegram.org/bot'+tokenFn+'/deleteMessage?chat_id='+chatIdFn+'&message_id='+messIdFn);
-        }else if(actionFn == 'getNewestMes'){
-            temp1 = httpGet('https://api.telegram.org/bot'+tokenFn+'/getUpdates?offset=-1');
-
-            if(temp1.indexOf('"text":"')!=-1){
-                returnvar = temp1.split('"text":"')[1].split('"')[0];	// newest message
-            }else{
-                returnvar = '';
-            }
-        }else if(actionFn == 'getMesPin'){
-            temp1 = httpGet('https://api.telegram.org/bot'+tokenFn+'/getChat?chat_id='+chatIdFn);
-            console.log('https://api.telegram.org/bot'+tokenFn+'/getChat?chat_id='+chatIdFn);
-            if(temp1.indexOf('pinned_message')==-1){	// Not found pinned message
-                returnvar = '';
-            }else{										// Have pinned message
-                returnvar = temp1.split('"text":"')[1].split('"')[0];
-            }
-        }
-
-        return returnvar;
-    }catch(err){
-        return "";
-    }
-}
 //memefi
+
