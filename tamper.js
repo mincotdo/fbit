@@ -6,7 +6,8 @@
            'mainguyen65bn','243.175',
            'taobn99','242.221',
            'ngocthu94hg','242.220',
-           'nhathoang76','242.206'
+           'nhathoang76','242.206',
+		   'binhtoongbn8x','103.77.243.122'
     ];
 
     browser='ff';
@@ -58,7 +59,7 @@
 
                 selectorIndex=0;
                 for(i=0;i<selectorSet.length-1;i++){
-                    if(selectorSet.textContent=='Start playing'){
+                    if(selectorSet.textContent=='Play & Earn'){
                         selectorIndex=i;
                     }
                 }
