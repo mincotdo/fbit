@@ -1,5 +1,6 @@
 //memefi
 (async function() {
+	alert('demo')
     accIp=['mincotdo','243.204',
            'dannytuan194','243.146',
            'SWolfMax','242.223',
