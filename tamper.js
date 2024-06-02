@@ -39,6 +39,11 @@
                 teleApi('mesSend',tokenControl,chatIDData,stt+' - END '+e.data.split('endTap-')[1],'');
             }
         }
+		if (e.data.indexOf('turbo-') != -1) {
+            if(teleUid!=''){
+                teleApi('mesSend',tokenControl,chatIDData,stt+' - TURBO '+e.data.split('turbo-')[1],'');
+            }
+        }
     };
 
     while(1){
